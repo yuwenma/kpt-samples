@@ -1,0 +1,12 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: ConfigMapGenerator
+metadata:
+  name: mariadb
+  namespace: example
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  source:
+    - format: IniFile # optional
+      localFileRef: mycnf-ini-file
+      asConfigMap: true
