@@ -34,7 +34,7 @@ spec:
               value: "true"
           ports:
             - name: mysql
-              containerPort: 3306
+              containerPort: 3000
           resources:
             limits: {}
             requests: {}
@@ -47,7 +47,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: mariadb
+            name: mariadb-6gfg5968c2
     metadata:
       labels:
         app.kubernetes.io/name: mariadb

@@ -6,12 +6,16 @@ metadata:
     config.kubernetes.io/local-config: "true"
 info:
   description: sample description
-
 pkgAutoRun:
-  inclNonKrmFiles: 
+  inclNonKrmFiles:
   - name: mycnf-ini-file
     path: my.cnf
-
-  pipeline:  
+  pipeline:
   - image: gcr.io/kpt-fn-demo/configmap-generator:yuwen-v0.1
     configPath: configmap-generator.yaml
+pipeline:
+  mutators:
+  - image: set-namespace:unstable
+    configPath: package-context.yaml
+  - image: gcr.io/kpt-fn-demo/set-mysql-port:yuwen-v0.1
+    configPath: set-mysql-port-fn.yaml

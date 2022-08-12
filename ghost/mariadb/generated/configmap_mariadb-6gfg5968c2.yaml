@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mariadb-6gfg5968c2
+  annotations:
+    internal.kpt.dev/generator: fn.kpt.dev|ConfigMapGenerator|example|mariadb
+data:
+  my.cnf: |
+    [client]
+    default-character-set=UTF8
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    port=3000
+
+    [mysqld]
+    basedir=/opt/bitnami/mariadb
+    blueprint_team=kpt
+    port=3000
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    slow_query_log=0
+    slow_query_log_file=/opt/bitnami/mariadb/logs/mysqld.log
+    character-set-server=UTF8
+    log-error=/opt/bitnami/mariadb/logs/mysqld.log
+    long_query_time=10.0
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    tmpdir=/opt/bitnami/mariadb/tmp
+    bind-address=*
+    collation-server=utf8_general_ci
+    max_allowed_packet=16M
+
+    [manager]
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+    port=3000
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+immutable: true
