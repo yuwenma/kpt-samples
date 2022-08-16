@@ -73,20 +73,20 @@ spec:
     name: cnrm-controller-manager-packagename
     namespace: cnrm-system
 
----
+# ---
 
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-  name: packagename-cc-robot-workloadidentity
-  namespace: config-control
-spec:
-  member: serviceAccount:parent-project-id.svc.id.goog[cnrm-system/cnrm-controller-manager-packagename]
-  role: roles/iam.workloadIdentityUser
-  resourceRef:
-    apiVersion: iam.cnrm.cloud.google.com/v1beta1
-    kind: IAMServiceAccount
-    name: packagename-cc-robot
+# apiVersion: iam.cnrm.cloud.google.com/v1beta1
+# kind: IAMPolicyMember
+# metadata:
+#   name: packagename-cc-robot-workloadidentity
+#   namespace: config-control
+# spec:
+#   member: serviceAccount:parent-project-id.svc.id.goog[cnrm-system/cnrm-controller-manager-packagename]
+#   role: roles/iam.workloadIdentityUser
+#   resourceRef:
+#     apiVersion: iam.cnrm.cloud.google.com/v1beta1
+#     kind: IAMServiceAccount
+#     name: packagename-cc-robot
 
 ---
 
