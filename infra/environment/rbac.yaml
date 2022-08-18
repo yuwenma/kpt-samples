@@ -23,6 +23,9 @@ spec:
   - members:
     - member: user:justinsb@google.com
     role: roles/editor
+  - members:
+    - member: user:justinsb@google.com
+    role: roles/container.admin
   resourceRef:
     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
     kind: Project
