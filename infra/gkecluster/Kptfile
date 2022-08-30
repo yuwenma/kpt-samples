@@ -8,6 +8,6 @@ info:
   description: sample description
 pipeline:
   mutators:
-    - image: gcr.io/justinsb-root-20220725/set-name-prefix
-    - image: gcr.io/justinsb-root-20220725/generator-configconnectorcontext
-    - image: gcr.io/justinsb-root-20220725/bind-gcp-resources
+    - image: set-name-prefix
+    - image: generator-configconnectorcontext
+    - image: bind-gcp-resources
