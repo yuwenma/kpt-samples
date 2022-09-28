@@ -30,7 +30,7 @@ spec:
   sourceSubnetworkIpRangesToNat: LIST_OF_SUBNETWORKS
   subnetwork:
   - subnetworkRef:
-      name: default
+      name: custom
       # namespace "binding" should be updated
       namespace: binding
     sourceIpRangesToNat:
@@ -45,7 +45,13 @@ metadata:
   namespace: binding
 spec:
   routingMode: REGIONAL
-  autoCreateSubnetworks: false
+  # ConfigControllerInstance does not support the "subnet" interface.
+  # Thus disabling the `autoCreateSubnetWorks` will cause 
+  # the configcontroller to complain about 
+  # "network uses manual subnet mode and requires specifying a subnetwork" issue. 
+  # As a workaround, we let the network to create subnet in each region,
+  # and manually create a standalone NAT, router and subnetwork in that network. 
+  autoCreateSubnetworks: true
 ---
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeRouter
@@ -67,7 +73,10 @@ kind: ComputeSubnetwork
 metadata:
   annotations:
     cnrm.cloud.google.com/blueprint: 'kpt-fn-live'
-  name: default
+  # With ComputeNetwork `autoCreateSubnetworks: true`,
+  # all region will have a subnetwork named "default", 
+  # to avoid conflict, we use a different subnet name.
+  name: custom
   namespace: binding
 spec:
   description: ConfigController subnet
