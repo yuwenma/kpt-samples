@@ -8,3 +8,7 @@ spec:
   managementConfig:
     standardManagementConfig:
       masterIPv4CidrBlock: 172.16.0.128/28
+      networkRef:
+        name: default
+        # namespace "binding" should be updated
+        namespace: binding
